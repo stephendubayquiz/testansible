@@ -1,0 +1,10 @@
+- name: Add Microsoft package repository
+  shell: |
+    curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg
+    sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/azure-cli.list'
+
+- name: Install Azure CLI
+  apt:
+    name: azure-cli
+    state: present

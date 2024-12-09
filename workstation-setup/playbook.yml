@@ -1,0 +1,9 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - include_role:
+        name: common
+    - include_role:
+        name: terraform
+    - include_role:
+        name: azure_cli
